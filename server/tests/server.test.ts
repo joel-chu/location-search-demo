@@ -26,6 +26,7 @@ test.cb(`It should able to return search result`, t => {
         t.fail()
       }
       t.truthy(res.text)
+      t.is(res.header['content-type'], 'application/json; charset=utf-8')
       t.end()
     })
 })
