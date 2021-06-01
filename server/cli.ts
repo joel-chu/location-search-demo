@@ -30,7 +30,8 @@ function mapRow(row: Array<any>, initObj: any): any {
 
   return columns.map((col: string, i: number): any => {
     if (col === 'initial') {
-      return [ col, row[1].substr(0, 1).toLowerCase() ]
+      // use the asciiname instead 
+      return [ col, row[2].substr(0, 1).toLowerCase() ]
     }
     return [ col, row[i] ]
   }).reduce((a: any, b: any): any => {
