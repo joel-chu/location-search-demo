@@ -5,9 +5,8 @@ const { join } = require('path')
 
 const cwd = join(__dirname, 'server')
 
-execSync(`npm install`, { cwd })
 execSync(`npm install`, { cwd: join(__dirname, 'demo-ui') })
-
+execSync(`npm install`, { cwd })
 exec(`npm run serve`, { cwd }, function(err, stdout, stderr) {
   if (err) {
     console.error(err)
