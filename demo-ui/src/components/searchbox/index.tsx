@@ -16,7 +16,7 @@ class SearchBox extends Component {
   onSubmit = (e: any) => {
 
     e.preventDefault()
-    axios.post(`/locations?q=${this.state.value}`, {})
+    axios.get(`/locations?q=${this.state.value}`, {})
       .then(res => {
         this.setState({ result: res.data })
       })
