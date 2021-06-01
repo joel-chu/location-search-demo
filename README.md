@@ -7,14 +7,13 @@ There are several parts:
 - CLI: There is a semi-interactive cli inside the `server/` folder. just `cd server && npm run cli`. It's for generating table and import the csv to the database. There is another one (explain in later section)
 - Unit test: inside the `server/` folder is using [ava.js](https://github.com/avajs/ava). Inside the `demo-ui/` is using stock Jest+enzyme, just some snapshot. No e2e.
 
-
 ## How to run this demo
 
-- clone this repo, and `cd location-search-demo && chmod +x run.js && ./run.js`. It does everything for you
+- clone this repo, run `node ./install.js`. Then `cd location-search-demo/server && npm run serve` then just point your browser to `http://localhost:3388`
 - Or build the docker file
 
 
-Have fun :) 
+Have fun :)
 
 ---
 
