@@ -1,4 +1,8 @@
 
 import { join } from "path"
 
-export const dbpath = join(__dirname, '..', '..', 'data', 'location-search-demo.db')
+const baseDir = join(__dirname, '..', '..', 'data')
+
+export const dbpath = join(baseDir, 'location-search-demo.db')
+
+export const csvFile = join(baseDir, 'GB-partial.csv')

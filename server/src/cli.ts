@@ -1,15 +1,11 @@
 // server/src/cli.ts
 // move part of the cli code here, ts is screwing up the path AGAIN?
-import { join } from 'path'
-
 import { parse } from 'fast-csv'
 import { createReadStream } from 'fs-extra'
 
-
+import { csvFile } from './model/dbpath'
 import { connect } from './model/connection'
 import { LocationModel } from './model/location'
-
-const importFile = join(__dirname, '..' ,'data', 'GB-partial.csv')
 
 /**
  * map each row with a column name
@@ -24,7 +20,7 @@ function mapRow(row: Array<any>, initObj: any): any {
     'alternatenames',
     'latitude',
     'longitude',
-    'initial' // special field
+    'initial' // special field for our own fun game later
   ]
 
   return columns.map((col: string, i: number): any => {
@@ -51,11 +47,11 @@ function mapRow(row: Array<any>, initObj: any): any {
  */
 export function readCsv(cb: any, finalCb?: any): void {
   let ctn = 0
-  createReadStream(importFile)
+  createReadStream(csvFile)
         .pipe(parse())
-        .on('error', error => console.error(error))
+        .on('error', error => console.error(error)) // should re-use the finalCb as errorHandler as well
         .on('data', row => {
-          if (ctn > 0) {
+          if (ctn > 0) { // skip the header
             cb(row, ctn)
           }
           ++ctn
@@ -78,10 +74,11 @@ export function runImport(): void {
     .then(connection => {
       readCsv(async (row: any, i: number) => {
         const location = mapRow(row, new LocationModel())
-        // let repo = connection.getRepository(location)
         await connection.manager.save(location)
+        // different way to do the same thing
+        // let repo = connection.getRepository(location)
         // await repo.save(location)
-        console.log(`Record ${i} has been saved`)
+        console.log(`Record ${i} saved`)
       })
     })
 }
