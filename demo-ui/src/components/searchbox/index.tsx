@@ -16,7 +16,7 @@ class SearchBox extends Component {
   onSubmit = (e: any) => {
 
     e.preventDefault()
-    axios.post(`/query/${this.state.value}`, {})
+    axios.post(`/locations?q=${this.state.value}`, {})
       .then(res => {
         this.setState({ result: res.data })
       })
@@ -43,8 +43,8 @@ class SearchBox extends Component {
         <hr />
         <ul class={style.listBox}>
           {
-            this.state.result.map((prop: any)=> (
-              <li class="animate__animated animate__backInLeft">{prop.asciiname}</li>
+            this.state.result.map((name: any)=> (
+              <li class="animate__animated animate__backInLeft">{name}</li>
             ))
           }
         </ul>

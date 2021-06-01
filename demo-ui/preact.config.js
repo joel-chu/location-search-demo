@@ -2,12 +2,14 @@
 // need to proxy back to our Koa setup
 module.exports = function(config) {
   if (config.devServer) {
+    const port = process.env.PORT || 3388
+
     config.devServer.proxy = [
       {
         // proxy requests matching a pattern:
-        path: '/query/**',
+        path: '/locations/**',
         // where to proxy to:
-        target: 'http://localhost:3388/query',
+        target: `http://localhost:${port}/locations`,
         // optionally change Origin: and Host: headers to match target:
         changeOrigin: true,
         changeHost: true,
