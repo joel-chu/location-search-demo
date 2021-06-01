@@ -8,7 +8,8 @@ setTimeout(function() {
 console.log("2");
 ```
 
-2,1
+2
+1
 
 setTimeout delay by 100 ms  
 
@@ -26,10 +27,20 @@ function foo(d) {
 foo(0);
 ```
 
-1,0
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
 
-first time d < 10, call itself plus one then run the console.log
-same process when the d still zero fall through to the console.log
+
+first time d < 10, call itself plus one (enter a recursion) until it reach 10 before it could run into the console.log
 
 3. If nothing is provided to `foo` we want the default response to be `5`. Explain the potential issue with the following code:
 
