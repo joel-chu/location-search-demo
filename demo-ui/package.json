@@ -7,7 +7,7 @@
     "build": "preact build",
     "serve": "sirv build --port 8080 --cors --single",
     "serve:koa": "node ./serve.js",
-    "dev": "npm run serve:koa & preact watch",
+    "dev": "preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "test": "jest ./tests"
   },
@@ -22,6 +22,7 @@
     ]
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "preact": "^10.3.1",
     "preact-render-to-string": "^5.1.4",

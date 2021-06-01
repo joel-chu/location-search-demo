@@ -27,6 +27,9 @@ router.get('/about-me', async (ctx: Koa.Context) => {
 })
 // finally the search method
 router.post('/:searchTerm', async (ctx:Koa.Context) => {
+
+  console.log(`Got search ${ctx.params.searchTerm}`)
+  
   const conn = await connect()
   const result = await conn
                   .getRepository(LocationModel)
