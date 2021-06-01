@@ -6,13 +6,13 @@ module.exports = function(config) {
       // proxy requests matching a pattern:
       path: '/query/**',
       // where to proxy to:
-      target: 'http://localhost:3388',
+      target: 'http://localhost:3388/query',
       // optionally change Origin: and Host: headers to match target:
       changeOrigin: true,
       changeHost: true,
 
       // optionally mutate request before proxying:
-      pathRewrite: function(path, request) {
+      pathRewrite: function(path, req) {
         // you can modify the outbound proxy request here:
         delete req.headers.referer;
 

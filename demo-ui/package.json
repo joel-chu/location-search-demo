@@ -1,13 +1,13 @@
 {
   "private": true,
   "name": "demo-ui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "build": "preact build",
     "serve": "sirv build --port 8080 --cors --single",
     "serve:koa": "node ./serve.js",
-    "dev": "npm run serve:koa & preact watch --open",
+    "dev": "npm run serve:koa & preact watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "test": "jest ./tests"
   },
@@ -28,6 +28,7 @@
     "preact-router": "^3.2.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^26.0.8",
     "@typescript-eslint/eslint-plugin": "^2.25.0",

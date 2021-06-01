@@ -1,6 +1,6 @@
-import { FunctionalComponent, h } from 'preact';
-import { Link } from 'preact-router/match';
-import style from './style.css';
+import { FunctionalComponent, h } from 'preact'
+import { Link } from 'preact-router/match'
+import style from './style.css'
 
 const Header: FunctionalComponent = () => {
     return (
@@ -15,7 +15,7 @@ const Header: FunctionalComponent = () => {
                 </Link>
             </nav>
         </header>
-    );
-};
+    )
+}
 
-export default Header;
+export default Header

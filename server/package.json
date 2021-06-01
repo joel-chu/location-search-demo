@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "demo-server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "location search demo",
   "main": "index.js",
   "scripts": {
