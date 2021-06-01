@@ -4,7 +4,7 @@ import { join } from 'path'
 import Koa from 'koa'
 import serve from 'koa-static'
 import HttpStatus from 'http-status-codes'
-import router from './router'
+// import router from './router'
 import router1 from './router1'
 
 const app:Koa = new Koa()
@@ -28,9 +28,10 @@ app.use(serve(buildDir))
 app.use(router1.routes())
 app.use(router1.allowedMethods())
 
+/*
 app.use(router.routes())
 app.use(router.allowedMethods())
-
+*/
 
 // Application error logging.
 app.on('error', console.error)
