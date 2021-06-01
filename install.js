@@ -7,6 +7,7 @@ const cwd = join(__dirname, 'server')
 
 execSync(`npm install`, { cwd: join(__dirname, 'demo-ui') })
 execSync(`npm install`, { cwd })
+/*
 exec(`npm run serve`, { cwd }, function(err, stdout, stderr) {
   if (err) {
     console.error(err)
@@ -17,3 +18,4 @@ exec(`npm run serve`, { cwd }, function(err, stdout, stderr) {
 
   console.log(stdout)
 })
+*/
