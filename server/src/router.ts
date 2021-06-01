@@ -25,6 +25,7 @@ router.get('/about-me', async (ctx: Koa.Context) => {
   const readme = readFileSync(join(__dirname, '..', '..', 'README.md'), {encoding: 'utf8'})
   ctx.body = marked(readme)
 })
+
 // finally the search method
 router.post('/:searchTerm', async (ctx:Koa.Context) => {
 

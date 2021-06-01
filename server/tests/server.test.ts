@@ -7,29 +7,11 @@ function listen(): any {
   return supertest(app.listen())
 }
 
-
-test.cb(`It should able to connect to the koa server`, t => {
+test.cb(`Should not be able to query if the q is less than 2 characters`, t => {
   listen()
-    .get("/query")
-    .expect(200, function (err: Error, res: any) {
-      if (err) {
-        console.error(err)
-        t.fail()
-      }
-      t.is(res.text, 'Hello world', 'res.text == Hello world')
-      t.end()
-    })
-})
-
-test.cb(`It should able to open the readme page`, t => {
-  listen()
-    .get('/query/about-me')
-    .expect(200, function(err: Error, res: any) {
-      if (err) {
-        console.error(err)
-        t.fail()
-      }
-      t.truthy(res.text.indexOf('location search demo'))
+    .get('/locations?q=x')
+    .expect(400, () => {
+      t.pass()
       t.end()
     })
 })
@@ -37,7 +19,7 @@ test.cb(`It should able to open the readme page`, t => {
 
 test.cb(`It should able to return search result`, t => {
   listen()
-    .post('/query/woo')
+    .get('/locations?q=woo')
     .expect(200, function(err: Error, res: any) {
       if (err) {
         console.error(err)
