@@ -2,8 +2,10 @@
 // need to proxy back to our Koa setup
 module.exports = function(config) {
   if (config.devServer) {
-    const port = process.env.PORT || 3388
+    
 
+	const port = process.env.PORT || 3388
+	console.log(port) 
     config.devServer.proxy = [
       {
         // proxy requests matching a pattern:
