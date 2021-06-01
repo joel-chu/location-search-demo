@@ -1,3 +1,7 @@
+[Answers to your questions](./QA.md)
+
+---
+
 # location search demo
 
 - Demo UI: It's React using [PreactX](https://preactjs.com/) engine (its the same, only much better)
@@ -11,7 +15,6 @@
 - Or build the docker file `docker build . -t <username>/location-search-demo` then run it `docker run -p 3388:3388 -d <username>/location-search-demo`
 
 
-Have fun :)
 
 ---
 
