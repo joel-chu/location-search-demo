@@ -7,7 +7,7 @@
 
 ## How to run this demo
 
-- clone this repo, run `node ./install.js`. Then `cd location-search-demo/server && npm run serve` then just point your browser to `http://localhost:3388`
+- clone this repo, cd into it, then run `node ./install.js`. Then `cd server && npm run serve` then just point your browser to `http://localhost:3388`
 - Or build the docker file `docker build . -t <username>/location-search-demo` then run it `docker run -p 3388:3388 -d <username>/location-search-demo`
 
 
