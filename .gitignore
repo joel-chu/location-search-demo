@@ -82,4 +82,4 @@ typings/
 server/data/*.tsv
 # server/data/*.csv
 
-./test.js
+test.js
