@@ -42,6 +42,41 @@ foo(0);
 
 first time d < 10, call itself plus one (enter a recursion) until it reach 10 before it could run into the console.log
 
+__ADD ONE DAY LATER__ (I have to admit this question caught me :S)
+
+```js
+function foo(d) {
+	if (d < 10) {
+		setTimeout(() => {
+			foo(d + 1);
+		}, 0)
+
+	}
+	console.log(d, d < 3);
+}
+
+foo(0)
+```
+
+the result will become
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+So the problem is how JS run a recursion in one thread. When using `setTimeout`
+event without any delay time (set to 0). It puts the running in sequence.
+But in the original code, it wasn't the recursion capture the thread first, and
+all the suppose to run code taken off from the stack backward. Interesting observation.
+
 3. If nothing is provided to `foo` we want the default response to be `5`. Explain the potential issue with the following code:
 
 ```jsx
