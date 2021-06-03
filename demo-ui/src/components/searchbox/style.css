@@ -38,3 +38,10 @@
     transform: rotate(360deg);
   }
 }
+
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}

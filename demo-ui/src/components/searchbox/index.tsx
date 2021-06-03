@@ -1,7 +1,23 @@
 // components/search-box
-import { Component, h } from 'preact'
+import { FunctionComponent, Component, h } from 'preact'
 import style from './style.css'
 import axios from 'axios'
+import ListBox from '../listbox'
+
+/////////////////////////////////////////////////////////
+
+const Loader: FunctionComponent<{t: boolean}> = ({ t = false }) => {
+  return (
+    <div class={ `${style.ldsRing} ${t ? style.show : style.hide }`}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  )
+}
+
+/////////////////////////////////////////////////////////
 
 type formData = {
   value?: any
@@ -9,16 +25,16 @@ type formData = {
 
 class SearchBox extends Component {
   state = {
+    loading: false,
     value: '',
-    result: []
+    results: []
   }
 
   onSubmit = (e: any) => {
-
     e.preventDefault()
     axios.get(`/locations?q=${this.state.value}`, {})
       .then(res => {
-        this.setState({ result: res.data })
+        this.setState({ results: res.data })
       })
   }
 
@@ -28,31 +44,27 @@ class SearchBox extends Component {
   }
 
   reset = () => {
-    this.setState({ value: '',  result: [] })
+    this.setState({ value: '',  results: [] })
   }
 
-  //
+  // output
   render(_: any, opt: formData) {
     return (
       <div class={style.searchBox}>
         <form onSubmit={this.onSubmit}>
-          <input type="text" value={opt.value} onInput={this.onInput} />
+          <input type="text" value={opt.value} onInput={this.onInput} /><Loader t={this.state.loading} />
           <button type="submit" disabled={opt.value.length <= 1}>Search</button>
-          <button type="button" onClick={this.reset} disabled={!(this.state.result.length > 0)}>RESET</button>
+          <button type="button" onClick={this.reset} disabled={!(this.state.results.length > 0)}>RESET</button>
         </form>
+
         <hr />
-        <ul class={style.listBox}>
-          {
-            this.state.result.map((name: any)=> (
-              <li class="animate__animated animate__backInLeft">{name}</li>
-            ))
-          }
-        </ul>
+
+        <ListBox results={this.state.results} />
+
       </div>
     )
   }
 }
-// not in use
-// <div class={ style.ldsRing }><div></div><div></div><div></div><div></div></div>
+
 
 export default SearchBox

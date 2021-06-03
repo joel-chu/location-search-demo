@@ -32,21 +32,21 @@ function DelayClsLi({ i, children }: ChildrenProps) {
 ////////////////////////////////////////////////////////////
 
 type Props = {
-  result: any[];
+  results: any[];
 }
 
 // Just stick an empty object to fill it up to satisfy the TS code pattern
 class ListBox extends Component<Props, {}> {
 
   shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.result.length > 0
+    return nextProps.results.length > 0
   }
 
   render() {
     return (
       <ul class={style.listBox}>
         {
-          this.props.result.map((name: any, i: number) => (
+          this.props.results.map((name: any, i: number) => (
             <DelayClsLi i={i}>{ name }</DelayClsLi>
           ))
         }
@@ -54,8 +54,5 @@ class ListBox extends Component<Props, {}> {
     )
   }
 }
-
-
-
 
 export default ListBox
