@@ -1,24 +1,61 @@
-import { FunctionalComponent, h } from 'preact'
+// Since this is going to be a sub-comp
+// we need to take special care to avoid all the re-rendering
+
+import { ComponentChildren, Component, h } from 'preact'
+import { useState } from 'preact/hooks'
 import style from './style.css'
 
+////////////////////////////////////////////////////////////
 
-interface Props {
-  result: any[];
+type ChildrenProps = {
+  i: number;
+  children: ComponentChildren;
 }
-// there is a problemm with the state as prop - NOT IN USE at the moment 
-const ListBox: FunctionalComponent<Props> = (props: Props) => {
 
-  console.log(props.result)
+// the headache, how to frozen it once the state is set
+function DelayClsLi({ i, children }: ChildrenProps) {
+
+  const [ update, setUpdate ] = useState('')
+
+  const delayBy = i * 100
+
+  setTimeout(() => {
+    setUpdate('animate__backInLeft')
+  }, delayBy)
 
   return (
-    <ul class={style.listBox}>
-      {
-        props.result.map((prop: any)=> (
-          <li>{prop.assciname}</li>
-        ))
-      }
-    </ul>
+    <li class={`animate__animated ${update}`}>{children}</li>
   )
 }
+
+
+////////////////////////////////////////////////////////////
+
+type Props = {
+  result: any[];
+}
+
+// Just stick an empty object to fill it up to satisfy the TS code pattern
+class ListBox extends Component<Props, {}> {
+
+  shouldComponentUpdate(nextProps: Props): boolean {
+    return nextProps.result.length > 0
+  }
+
+  render() {
+    return (
+      <ul class={style.listBox}>
+        {
+          this.props.result.map((name: any, i: number) => (
+            <DelayClsLi i={i}>{ name }</DelayClsLi>
+          ))
+        }
+      </ul>
+    )
+  }
+}
+
+
+
 
 export default ListBox
