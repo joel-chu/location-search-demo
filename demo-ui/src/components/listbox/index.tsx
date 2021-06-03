@@ -38,9 +38,15 @@ type Props = {
 // Just stick an empty object to fill it up to satisfy the TS code pattern
 class ListBox extends Component<Props, {}> {
 
+  /*
+  @TODO how to finer control when it's going to re-render
+
+  initResults = []
+
   shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.results.length > 0
+    return true /// nextProps.results.length > 0
   }
+  */
 
   render() {
     return (

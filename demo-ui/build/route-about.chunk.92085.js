@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{SDU8:function(t,n,e){"use strict";e.r(n);var o=e("hosL"),a=e("QRet"),c="about__3kD8f",u=e("czhI"),s=e.n(u);n.default=function(){var t=Object(a.b)(""),n=t[0],e=t[1];return Object(a.a)((function(){s.a.get("/query/about-me").then((function(t){console.log(t.data),e(t.data)}))}),[]),Object(o.h)("div",{class:c},Object(o.h)("slot",null,n))}}}]);
+//# sourceMappingURL=route-about.chunk.92085.js.map

@@ -2,10 +2,9 @@
 // need to proxy back to our Koa setup
 module.exports = function(config) {
   if (config.devServer) {
-    
-
+    // webpack POS never f***ing works correctly 
 	const port = process.env.PORT || 3388
-	console.log(port) 
+	console.log(port)
     config.devServer.proxy = [
       {
         // proxy requests matching a pattern:
