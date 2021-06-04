@@ -1,3 +1,10 @@
 .listBox {
-  
+
+}
+/* not the best way should share this in the top level */
+.hide {
+  display: none;
+}
+.show {
+  display: block;
 }

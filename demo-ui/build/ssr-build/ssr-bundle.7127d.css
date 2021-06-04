@@ -74,7 +74,14 @@ html, body {
 }
 
 .listBox__24Agx {
-  
+
+}
+/* not the best way should share this in the top level */
+.hide__cMgIq {
+  display: none;
+}
+.show__2XOKD {
+  display: block;
 }
 
 .notfound__25Mra {
@@ -137,4 +144,4 @@ html, body {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.56999.css.map*/
+/*# sourceMappingURL=ssr-bundle.7127d.css.map*/
